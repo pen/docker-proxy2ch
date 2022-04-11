@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  proxy2ch:
+    build: .
+    volumes:
+      - $PWD/lua:/ext
+    ports:
+      - "9080:9080"
+    environment:
+      PX2C_FLAGS: "-c"
+      PX2C_USELUA: "nop.lua"

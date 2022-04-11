@@ -1,0 +1,38 @@
+FROM alpine:latest AS builder
+
+ARG PX2C_VERSION="v20220406"
+
+RUN apk --update-cache add \
+    curl-dev \
+    g++ \
+    gnu-libiconv-dev \
+    lua5.4-dev \
+    make \
+    patch
+
+WORKDIR /root
+RUN wget https://notabug.org/NanashiNoGombe/proxy2ch/archive/${PX2C_VERSION}.tar.gz
+RUN tar xzvf ${PX2C_VERSION}.tar.gz
+
+WORKDIR /root/proxy2ch
+COPY patch/ /tmp/
+RUN patch -p1 < /tmp/alpine.patch
+RUN make
+
+
+FROM alpine:latest
+LABEL org.opencontainers.image.authors="Abe Masahiro <pen@thcomp.org>" \
+    org.opencontainers.image.source="https://github.com/pen/docker-proxy2ch"
+
+RUN apk --no-cache add \
+    libcurl \
+    libstdc++ \
+    lua5.4-libs
+
+COPY --from=builder /root/proxy2ch/proxy2ch /usr/local/bin/
+COPY rootfs/ /
+
+VOLUME /ext
+EXPOSE 9080
+
+CMD ["/etc/rc.entry"]

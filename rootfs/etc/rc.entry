@@ -1,0 +1,9 @@
+#!/bin/sh
+
+DEFAULT_FLAGS='--verbose -g'
+
+if [ -n "$PX2C_USELUA" ]; then
+    LUA_FLAG="--bbscgi-lua=/ext/$PX2C_USELUA"
+fi
+
+exec /usr/local/bin/proxy2ch $DEFAULT_FLAGS $PX2C_FLAGS $LUA_FLAG

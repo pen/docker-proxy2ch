@@ -1,0 +1,5 @@
+*.md
+*.patch
+*.tar
+lua/
+ubuntu/
