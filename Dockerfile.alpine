@@ -1,6 +1,6 @@
 FROM alpine:latest AS builder
 
-ARG PX2C_VERSION="v20220406"
+ARG PX2C_VERSION="v20220415"
 
 RUN apk --update-cache add \
     curl-dev \
