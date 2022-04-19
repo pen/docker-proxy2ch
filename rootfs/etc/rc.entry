@@ -62,4 +62,7 @@ if [ -n "$PX2C_MITM_CA_PEM" ]; then
     fi
 fi
 
-exec /usr/local/bin/proxy2ch --verbose -g $flags
+while true; do
+    /usr/local/bin/proxy2ch --verbose -g $flags
+    sleep 3
+done
