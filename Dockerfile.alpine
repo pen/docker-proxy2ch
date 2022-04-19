@@ -1,6 +1,6 @@
 FROM alpine:latest AS builder
 
-ARG PX2C_VERSION="v20220415"
+ARG NOTABUG_PX2C_HASH="aa9e113be2"
 
 RUN apk --update-cache add \
     curl-dev \
@@ -11,8 +11,8 @@ RUN apk --update-cache add \
     patch
 
 WORKDIR /root
-RUN wget https://notabug.org/NanashiNoGombe/proxy2ch/archive/${PX2C_VERSION}.tar.gz
-RUN tar xzvf ${PX2C_VERSION}.tar.gz
+RUN wget https://notabug.org/NanashiNoGombe/proxy2ch/archive/${NOTABUG_PX2C_HASH}.tar.gz
+RUN tar xzvf ${NOTABUG_PX2C_HASH}.tar.gz
 
 WORKDIR /root/proxy2ch
 COPY patch/ /tmp/
