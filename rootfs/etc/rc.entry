@@ -10,7 +10,7 @@ flag() {
         if [ -n "$ev" ]; then
             case "$t" in
             1) flags="$flags $f"            ;;
-            p) ev="/ext/$ev"; flags="$flags $f ${ev/*\/\///}" ;;
+            p) ev="ext/$ev"; flags="$flags $f /${ev#*//}" ;;
             q) flags="$flags $f \"$ev\""    ;;
             *) flags="$flags $f $ev"        ;;
             esac
@@ -34,6 +34,7 @@ flag --api-dat-ua       q   API_DAT_UA
 flag --api-auth-xua     q   API_AUTH_XUA
 flag --api-dat-xua      q   API_DAT_XUA
 flag --api-server       s   API_SERVER
+flag --api-override     1   API_OVERRIDE
 flag --bbsmenu          q   BBSMENU
 flag --chunked          1   CHUNKED
 flag --bbscgi-header    q   BBSCGI_HEADER

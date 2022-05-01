@@ -1,12 +1,30 @@
-version: '2'
+version: '3'
 services:
   proxy2ch:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: proxy2ch
     container_name: proxy2ch
     volumes:
       - $PWD/lua:/ext
     ports:
       - "9080:9080"
+    environment:
+      PX2C_FLAGS: "-c"
+      PX2C_BBSCGI_LUA: "nop.lua"
+  proxy2ch_ubuntu:
+    build: 
+      context: .
+      dockerfile: Dockerfile.ubuntu
+    image: proxy2ch_ubuntu
+    container_name: proxy2ch_ubuntu
+    volumes:
+      - $PWD/lua:/ext
+    ports:
+      - "9081:9080"
+    profiles:
+      - ubuntu
     environment:
       PX2C_FLAGS: "-c"
       PX2C_BBSCGI_LUA: "nop.lua"

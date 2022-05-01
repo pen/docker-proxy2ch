@@ -1,11 +1,11 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -4,7 +4,7 @@
+@@ -4,6 +4,6 @@
  OBJS := $(OBJS:.c=.o)
  
 -CFLAGS = -O2
 -LDFLAGS = -lcurl -lpthread
-+CFLAGS = -O2 -DUSE_MITM -DUSE_LUA -I/usr/include/lua5.3
-+LDFLAGS = -lcurl -lpthread -llua5.3 -lssl -lcrypto
++CFLAGS = -O2 -DUSE_MITM -DUSE_LUA -I/usr/include/lua5.4
++LDFLAGS = -lcurl -lpthread -llua5.4 -lssl -lcrypto
  
  UNAME := $(shell uname)

@@ -6,14 +6,14 @@
 
 Dockerhubでは公開していないので、まずリポジトリをコピーしてください。
 
-```
+```shell
 git clone https://github.com/pen/docker-proxy2ch
 cd docker-proxy2ch
 ```
 
 とりあえず動かすならそのまま次を。
 
-```
+```shell
 docker compose up -d
 ```
 
@@ -21,15 +21,10 @@ docker compose up -d
 docker-compose.yaml と rootfs/etc/rc.entry を参照。
 
 
-## ベースをUbuntu版に
+## Ubuntuベース版
 
+```shell
+docker compose --profile ubuntu up -d
 ```
-ln -sf Dockerfile.ubuntu Docker
-docker compose build --no-cache
-```
 
-Luaのバージョンは5.3になります。
-
-## その他
-
-Dockerhubでは公開していません。
+ポート9081で動き始めます。
