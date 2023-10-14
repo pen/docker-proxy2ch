@@ -1,6 +1,6 @@
 FROM alpine:latest AS builder
 
-ARG NOTABUG_PX2C_HASH="a1ca6bf8ad"
+ARG NOTABUG_PX2C_HASH="0c97e3b5e6"
 
 RUN apk --update-cache add \
     curl-dev \

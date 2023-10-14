@@ -1,6 +1,6 @@
 FROM ubuntu:latest AS builder
 
-ARG NOTABUG_PX2C_HASH="aa9e113be2"
+ARG NOTABUG_PX2C_HASH="0c97e3b5e6"
 
 RUN apt update
 RUN apt install -y --no-install-recommends \
